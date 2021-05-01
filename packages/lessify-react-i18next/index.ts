@@ -19,7 +19,7 @@ export function LessifyReactI18next(config: LessifyReactI18nextConfig): any {
   if (config.space.apiKey == null || config.space.apiKey === '') {
     throw new Error('Lessify Configuration API Key can\'t be empty');
   }
-  const url = (config.space.beta == null || config.space.beta === false) ? 'https://api.lessify.io' : 'https://dev-api.lessify.io';
+  const url = (config.space.beta == null || !config.space.beta) ? 'https://api.lessify.io' : 'https://dev-api.lessify.io';
   return {
     loadPath: `${url}/v1/spaces/${config.space.spaceId}/environments/${config.space.environment}/translations.{{lng}}.json`,
     crossDomain: true,
