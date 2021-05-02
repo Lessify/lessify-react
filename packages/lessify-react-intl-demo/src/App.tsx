@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {createIntl, FormattedMessage, RawIntlProvider} from 'react-intl';
 import {Lessify} from '@lessify/sdk';
-import Wrap from './wrap';
 
 export const lessify: Lessify = new Lessify({
   spaceId: 'e600fed0-0674-11eb-8ebc-355c3e3200ae',
@@ -30,7 +29,7 @@ export default class App extends React.Component<any, any>{
   changeLanguage(newLocale: string): void {
     lessify.translation.get(newLocale)
     .then( messages => {
-      intl = createIntl({locale: newLocale, messages: messages, textComponent: Wrap})
+      intl = createIntl({locale: newLocale, messages: messages})
       fmt = intl.formatMessage
       document.documentElement.lang = newLocale
       this.setState( {locale: newLocale})
